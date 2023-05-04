@@ -1,8 +1,23 @@
 <p class="text-2xl font-bold text-orange-500">home works!</p>
-
 <button
   class="bg-orange-500 text-zinc-100 p-3 rounded w-fit transition-colors hover:bg-orange-400"
   [routerLink]="['/login']"
 >
   Sair
 </button>
+
+<p class="text-2xl font-bold text-orange-500">testando server</p>
+
+<div class="flex flex-col gap-2 w-fit">
+  <div
+    class="flex justify-start items-center gap-2 bg-zinc-50 shadow-md rounded-lg p-2"
+    *ngFor="let restaurant of restaurantsList"
+  >
+    <img
+      class="w-14 rounded"
+      [src]="restaurant.imagePath"
+      alt="{{ restaurant.name }} logo"
+    />
+    <p class="text-orange-500 font-bold text-base">{{ restaurant.name }}</p>
+  </div>
+</div>
