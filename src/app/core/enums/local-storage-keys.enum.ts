@@ -1,0 +1,5 @@
+export enum LocalStorageKeys {
+  CART_ITEMS = 'CART_ITEMS',
+  CART_ITEMS_PLACE_ID = 'CART_ITEMS_PLACE_ID',
+  USER_ADDRESSES = 'USER_ADDRESSES',
+}
