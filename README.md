@@ -23,16 +23,6 @@ Desenvolvido a fim de ser utilizado como avaliação da competência de Programa
 
 `ng serve` ou `npm start`
 
-## Iniciando o Backend ⚙️
-
-### Instalando o json-server
-
-`npm install -g json-server`
-
-### Iniciando o serviço (raiz da aplicação)
-
-`json-server db.json`
-
 ## Utilitários 💡
 
 Expressões regulares usadas na validação de formulários

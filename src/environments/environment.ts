@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000',
-  apmServer: 'http://localhost',
+  apiUrl: 'https://calm-sombrero-cow.cyclic.app/',
+  apmServer: 'https://calm-sombrero-cow.cyclic.app/',
 };
