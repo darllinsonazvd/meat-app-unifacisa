@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Input, Ripple, initTE } from 'tw-elements';
 
 @Component({
   selector: 'app-login',
@@ -7,5 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    initTE({ Input, Ripple });
+  }
 }
