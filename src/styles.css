@@ -8,6 +8,11 @@
   font-family: "Inter", sans-serif;
 }
 
+::selection {
+  background-color: #3b71ca;
+  color: #fff;
+}
+
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
 /* position */
@@ -155,16 +160,16 @@ button.toast-close-button {
   pointer-events: auto;
 }
 .toast-success {
-  background-color: #22c55e;
+  background-color: #40a44e;
 }
 .toast-error {
-  background-color: #ef4444;
+  background-color: #dc4c64;
 }
 .toast-info {
-  background-color: #0ea5e9;
+  background-color: #54b4d3;
 }
 .toast-warning {
-  background-color: #facc15;
+  background-color: #e4a236;
 }
 .toast-progress {
   position: absolute;

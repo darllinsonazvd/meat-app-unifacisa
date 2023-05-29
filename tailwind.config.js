@@ -1,8 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
+  content: [
+    "./src/**/*.{html,ts}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      rotate: {
+        360: "360deg",
+      },
+      keyframes: {
+        float: {
+          "0%": { transform: "translatey(0px)" },
+          "50%": { transform: "translatey(-10px)" },
+          "100%": { transform: "translatey(0px)" },
+        },
+      },
+      animation: {
+        float: "float 4s linear infinite",
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("tw-elements/dist/plugin.cjs")],
+  darkMode: "class",
 };
