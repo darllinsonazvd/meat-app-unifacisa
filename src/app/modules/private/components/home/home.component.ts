@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { RestaurantModel } from 'src/app/core/models/restaurant.model';
+import { LoginService } from 'src/app/core/services/login.service';
 import { RestaurantsService } from 'src/app/core/services/restaurants.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private spinnerService: NgxSpinnerService,
-    private restaurantsService: RestaurantsService
+    private restaurantsService: RestaurantsService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
@@ -37,5 +39,14 @@ export class HomeComponent implements OnInit {
         this.spinnerService.hide();
       }
     );
+  }
+
+  /**
+   * @description Desconectar usuário da aplicação
+   *
+   * @author Darllinson Azevedo
+   */
+  logout() {
+    this.loginService.logout();
   }
 }
