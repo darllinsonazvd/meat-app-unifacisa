@@ -6,6 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        onTop: "0 -20px 20px -20px rgba(0, 0, 0, 0.25)",
+      },
+      borderRadius: {
+        "onTop-xl": "12px 12px 0 0",
+      },
       rotate: {
         360: "360deg",
       },

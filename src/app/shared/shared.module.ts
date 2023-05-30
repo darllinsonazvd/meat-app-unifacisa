@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, NavbarComponent],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, NavbarComponent],
 })
 export class SharedModule {}
