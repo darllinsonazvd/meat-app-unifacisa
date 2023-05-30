@@ -4,8 +4,21 @@ module.exports = {
     "./src/**/*.{html,ts}",
     "./node_modules/tw-elements/dist/js/**/*.js",
   ],
+  daisyui: {
+    themes: false,
+  },
+  darkMode: "class",
   theme: {
     extend: {
+      backgroundImage: {
+        "cover-img": "url('assets/img/restaurants/cover.png')",
+      },
+      boxShadow: {
+        onTop: "0 -20px 20px -20px rgba(0, 0, 0, 0.25)",
+      },
+      borderRadius: {
+        "onTop-xl": "12px 12px 0 0",
+      },
       rotate: {
         360: "360deg",
       },
@@ -21,6 +34,6 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tw-elements/dist/plugin.cjs")],
+  plugins: [require("tw-elements/dist/plugin.cjs"), require("daisyui")],
   darkMode: "class",
 };

@@ -16,9 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
