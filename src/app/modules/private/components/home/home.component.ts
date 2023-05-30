@@ -3,6 +3,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { RestaurantModel } from 'src/app/core/models/restaurant.model';
 import { LoginService } from 'src/app/core/services/login.service';
 import { RestaurantsService } from 'src/app/core/services/restaurants.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private spinnerService: NgxSpinnerService,
+    private toastService: ToastService,
     private restaurantsService: RestaurantsService,
     private loginService: LoginService
   ) {}
@@ -35,8 +37,12 @@ export class HomeComponent implements OnInit {
         this.spinnerService.hide();
       },
       (err) => {
-        console.log(err);
         this.spinnerService.hide();
+        this.toastService.showError(
+          3000,
+          'Erro ao carregar os estabelecimentos!',
+          'Contate o admin.'
+        );
       }
     );
   }

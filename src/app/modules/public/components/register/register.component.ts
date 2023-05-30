@@ -11,8 +11,12 @@ import { Input, Ripple, initTE } from 'tw-elements';
 })
 export class RegisterComponent implements OnInit {
   public registerForm = new FormGroup({
-    name: new FormControl<string>('', { validators: Validators.required }),
-    email: new FormControl<string>('', { validators: Validators.required }),
+    name: new FormControl<string>('', {
+      validators: [Validators.required, Validators.minLength(3)],
+    }),
+    email: new FormControl<string>('', {
+      validators: [Validators.required, Validators.email],
+    }),
     password: new FormControl<string>('', {
       validators: [Validators.required, Validators.minLength(6)],
     }),

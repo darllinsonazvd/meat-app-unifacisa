@@ -16,6 +16,11 @@ export class HeaderComponent implements OnInit, AfterContentInit {
     this.showHeaderShadow();
   }
 
+  /**
+   * @description Realizar busca do usuário
+   *
+   * @author Darllinson Azevedo
+   */
   handleSearch() {
     alert(`Busca: ${this.userSearch.trim()}`);
   }
