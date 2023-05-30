@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit {
 
   public slides: { src: string; alt: string }[] = [
     {
-      src: 'assets/img/home/frete-gratis.png',
+      src: 'assets/img/home/frete-gratis.svg',
       alt: 'Frete gratis nas suas compras',
     },
-    { src: 'assets/img/home/drones.png', alt: 'Entrega por drones' },
-    { src: 'assets/img/home/coca.png', alt: 'Propaganda coca-cola' },
+    { src: 'assets/img/home/drones.svg', alt: 'Entrega por drones' },
+    { src: 'assets/img/home/coca.svg', alt: 'Propaganda coca-cola' },
   ];
 
   constructor(

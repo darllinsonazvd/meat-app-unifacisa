@@ -1,8 +1,10 @@
 <header
-  class="w-full h-fit bg-white p-4 gap-4 flex flex-col justify-center items-start fixed top-0 transition-shadow duration-300"
+  class="w-full h-fit bg-white p-4 gap-4 flex flex-col justify-center items-start fixed top-0 transition-shadow duration-300 z-50"
   [ngClass]="showShadow ? 'shadow-lg' : ''"
 >
-  <div class="w-full flex justify-between items-center gap-2">
+  <div
+    class="w-full max-w-5xl my-0 mx-auto flex justify-between items-center gap-2"
+  >
     <img
       class="w-[75px] h-[42px] cursor-pointer"
       src="assets/img/logo/meat-icon-primary.png"
@@ -42,7 +44,7 @@
     </div>
   </div>
   <label
-    class="w-full p-3 bg-zinc-200 rounded-lg focus-within:bg-primary-100 flex items-center justify-between"
+    class="w-full max-w-5xl my-0 mx-auto p-3 bg-zinc-200 rounded-lg focus-within:bg-primary-100 flex items-center justify-between"
   >
     <input
       class="w-full bg-transparent border-none focus:outline-none text-zinc-600 focus:border-none text-sm focus:text-primary-600 placeholder:text-zinc-600 focus:placeholder:text-primary-600 placeholder:text-sm transition-colors duration-300"

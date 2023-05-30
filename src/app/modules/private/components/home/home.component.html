@@ -1,21 +1,35 @@
 <app-header></app-header>
 
-<div class="w-full pt-36 pb-20 px-3">
-  <div class="carousel rounded-box gap-2">
-    <div *ngFor="let slide of slides" class="carousel-item w-full">
-      <img [src]="slide.src" [alt]="slide.alt" />
+<div class="w-full max-w-5xl my-0 mx-auto px-3 lg:px-0 pt-36 pb-20">
+  <div class="my-0 mx-auto">
+    <div class="max-w-5xl carousel rounded-box gap-2 lg:hidden">
+      <div *ngFor="let slide of slides" class="carousel-item">
+        <img [src]="slide.src" [alt]="slide.alt" />
+      </div>
+    </div>
+
+    <div
+      class="hidden w-full lg:flex lg:gap-2 lg:justify-center lg:items-center"
+    >
+      <div *ngFor="let slide of slides">
+        <img [src]="slide.src" [alt]="slide.alt" />
+      </div>
     </div>
   </div>
 
   <div class="w-full flex flex-col mt-8">
     <h1 class="text-2xl font-bold text-zinc-900">Restaurantes</h1>
 
-    <div class="w-full mt-6 flex flex-col gap-6">
+    <div
+      class="w-full max-w-5xl my-0 mx-auto mt-6 flex flex-col gap-6 sm:flex-row sm:justify-between sm:flex-wrap"
+    >
       <div
-        class="w-full flex flex-col"
+        class="w-full flex flex-col sm:w-64 lg:w-80 cursor-pointer transition-transform duration-300 hover:scale-105"
         *ngFor="let restaurant of restaurantsList"
       >
-        <div class="w-full h-36 bg-cover-img bg-cover rounded-3xl">
+        <div
+          class="w-full h-36 bg-cover-img bg-cover rounded-3xl sm:w-64 lg:w-80"
+        >
           <img
             class="w-20 h-20 mt-4 ml-4 rounded-full"
             [src]="restaurant.imagePath"
