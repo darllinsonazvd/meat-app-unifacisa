@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{html,ts}",
     "./node_modules/tw-elements/dist/js/**/*.js",
   ],
+  daisyui: {
+    themes: false,
+  },
   darkMode: "class",
   theme: {
     extend: {
