@@ -4,6 +4,7 @@ module.exports = {
     "./src/**/*.{html,ts}",
     "./node_modules/tw-elements/dist/js/**/*.js",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       backgroundImage: {
