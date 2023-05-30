@@ -1,19 +1,38 @@
 <app-header></app-header>
 
 <div class="w-full pt-36 pb-20 px-3">
-  <p class="text-2xl font-bold text-primary">testando server</p>
+  <div class="carousel rounded-box gap-2">
+    <div *ngFor="let slide of slides" class="carousel-item w-full">
+      <img [src]="slide.src" [alt]="slide.alt" />
+    </div>
+  </div>
 
-  <div class="flex flex-col gap-2 w-fit">
-    <div
-      class="flex justify-start items-center gap-2 bg-zinc-50 shadow-md rounded-lg p-2"
-      *ngFor="let restaurant of restaurantsList"
-    >
-      <img
-        class="w-14 rounded"
-        [src]="restaurant.imagePath"
-        alt="{{ restaurant.name }} logo"
-      />
-      <p class="text-primary font-bold text-base">{{ restaurant.name }}</p>
+  <div class="w-full flex flex-col mt-8">
+    <h1 class="text-2xl font-bold text-zinc-900">Restaurantes</h1>
+
+    <div class="w-full mt-6 flex flex-col gap-6">
+      <div
+        class="w-full flex flex-col"
+        *ngFor="let restaurant of restaurantsList"
+      >
+        <div class="w-full h-36 bg-cover-img bg-cover rounded-3xl">
+          <img
+            class="w-20 h-20 mt-4 ml-4 rounded-full"
+            [src]="restaurant.imagePath"
+            alt="{{ restaurant.name + ' logo' }}"
+          />
+        </div>
+
+        <div class="w-full flex flex-col">
+          <h1 class="font-bold text-zinc-900 mt-1">
+            {{ restaurant.name }}
+          </h1>
+          <p class="text-sm">{{ restaurant.category }}</p>
+          <p class="text-sm font-bold text-primary-600">
+            {{ restaurant.deliveryEstimate }} | entrega grátis
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -21,11 +40,11 @@
     type="button"
     data-te-ripple-init
     data-te-ripple-color="light"
-    class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+    class="mt-4 w-full inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
     [routerLink]="['/login']"
     (click)="logout()"
   >
-    Sair
+    Sair (depois eu tiro esse botao)
   </button>
 </div>
 

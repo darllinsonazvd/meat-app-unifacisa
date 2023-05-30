@@ -12,6 +12,15 @@ import { ToastService } from 'src/app/core/services/toast.service';
 export class HomeComponent implements OnInit {
   public restaurantsList: RestaurantModel[] = [];
 
+  public slides: { src: string; alt: string }[] = [
+    {
+      src: 'assets/img/home/frete-gratis.png',
+      alt: 'Frete gratis nas suas compras',
+    },
+    { src: 'assets/img/home/drones.png', alt: 'Entrega por drones' },
+    { src: 'assets/img/home/coca.png', alt: 'Propaganda coca-cola' },
+  ];
+
   constructor(
     private spinnerService: NgxSpinnerService,
     private toastService: ToastService,
