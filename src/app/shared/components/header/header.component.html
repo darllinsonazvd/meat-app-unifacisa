@@ -1,0 +1,71 @@
+<header
+  class="w-full h-fit bg-white p-4 gap-4 flex flex-col justify-center items-start fixed top-0 transition-shadow duration-300"
+  [ngClass]="showShadow ? 'shadow-lg' : ''"
+>
+  <div class="w-full flex justify-between items-center gap-2">
+    <img
+      class="w-[75px] h-[42px] cursor-pointer"
+      src="assets/img/logo/meat-icon-primary.png"
+      alt="Meat logo"
+      [routerLink]="['/private/home']"
+    />
+    <div class="flex items-center cursor-pointer">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 256 256"
+        class="w-7 h-7 fill-primary-600"
+      >
+        <path
+          d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"
+        ></path>
+      </svg>
+      <div class="flex flex-col">
+        <p class="text-sm text-zinc-400 font-medium leading-4">Você está em</p>
+        <div class="flex items-center gap-1">
+          <p class="text-base text-zinc-900 font-medium leading-4">
+            Campina Grande
+          </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <label
+    class="w-full p-3 bg-zinc-200 rounded-lg focus-within:bg-primary-100 flex items-center justify-between"
+  >
+    <input
+      class="w-full bg-transparent border-none focus:outline-none text-zinc-600 focus:border-none text-sm focus:text-primary-600 placeholder:text-zinc-600 focus:placeholder:text-primary-600 placeholder:text-sm transition-colors duration-300"
+      type="text"
+      placeholder="Busque por lojas ou categorias"
+      [(ngModel)]="userSearch"
+      (keydown.enter)="userSearch.trim() && handleSearch()"
+    />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 256 256"
+      fill="#52525b"
+      class="w-6 h-6"
+      [ngClass]="userSearch.trim() && 'fill-primary-600'"
+      (click)="userSearch.trim() && handleSearch()"
+    >
+      <path
+        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+      ></path>
+    </svg>
+  </label>
+</header>
+
+<router-outlet></router-outlet>
