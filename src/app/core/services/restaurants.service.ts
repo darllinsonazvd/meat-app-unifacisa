@@ -22,4 +22,18 @@ export class RestaurantsService {
       `${environment.apiUrl}/restaurants`
     );
   }
+
+  /**
+   * @description Recuperar detalhes de um restaurante
+   *
+   * @author Darllinson Azevedo
+   *
+   * @param id Id do restaurante
+   * @returns Detalhes de um restaurante
+   */
+  getRestaurantDetails(id: string): Observable<RestaurantModel> {
+    return this.httpClient.get<RestaurantModel>(
+      `${environment.apiUrl}/restaurants/${id}`
+    );
+  }
 }

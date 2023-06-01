@@ -1,0 +1,76 @@
+<div class="w-full h-screen bg-white" *ngIf="loaded">
+  <div class="w-full h-56 bg-cover-imgBig bg-cover relative">
+    <div
+      class="w-full h-56 bg-gradient-to-b from-black/20 to-transparent absolute top-0 left-0"
+    ></div>
+  </div>
+
+  <a
+    class="w-10 h-10 bg-white shadow-mg fixed top-8 left-4 rounded-full flex items-center justify-center"
+    [routerLink]="['/private/home']"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 256 256"
+      class="fill-zinc-900"
+    >
+      <path
+        d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
+      ></path>
+    </svg>
+  </a>
+
+  <div class="px-4 w-full flex flex-col justify-center items-center">
+    <div
+      class="w-full max-w-[350px] flex flex-col gap-4 h-fit p-6 bg-white rounded-3xl shadow-xl absolute top-32"
+    >
+      <div class="w-full flex justify-start items-center gap-6">
+        <img
+          class="w-20 h-20 rounded-full border border-zinc-400"
+          [src]="restaurant.imagePath"
+          [alt]="restaurant.name + ' logo'"
+        />
+        <div class="w-full flex flex-col">
+          <strong class="text-base font-bold">{{ restaurant.name }}</strong>
+          <p class="text-base font-normal">{{ restaurant.category }}</p>
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="w-full flex flex-col items-start">
+          <p class="text-xs text-zinc-600">Funcionamento</p>
+          <strong class="text-sm font-bold text-zinc-900">{{
+            restaurant.hours
+          }}</strong>
+        </div>
+      </div>
+      <div class="w-full flex justify-start gap-4">
+        <div class="w-fit flex flex-col items-start">
+          <p class="text-xs text-zinc-600">Avaliação</p>
+          <div class="w-fit flex justify-start items-center gap-1">
+            <div *ngFor="let rating of getRating(restaurantRating)">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 256 256"
+                class="fill-primary-600"
+              >
+                <path
+                  d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-fit flex flex-col items-start">
+          <p class="text-xs text-zinc-600">Tempo médio</p>
+          <strong class="text-sm font-bold text-zinc-900">{{
+            restaurant.deliveryEstimate
+          }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
