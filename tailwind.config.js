@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "cover-img": "url('assets/img/restaurants/cover.png')",
+        "cover-imgBig": "url('assets/img/restaurants/cover-big.png')",
       },
       boxShadow: {
         onTop: "0 -20px 20px -20px rgba(0, 0, 0, 0.25)",

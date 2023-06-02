@@ -26,6 +26,7 @@
       <div
         class="w-full flex flex-col sm:w-64 lg:w-80 cursor-pointer transition-transform duration-300 hover:scale-105"
         *ngFor="let restaurant of restaurantsList"
+        [routerLink]="['../restaurant', restaurant.id]"
       >
         <div
           class="w-full h-36 bg-cover-img bg-cover rounded-3xl sm:w-64 lg:w-80"
