@@ -45,16 +45,4 @@ export class RestaurantDetailsComponent implements OnInit {
         console.log(restaurant);
       });
   }
-
-  /**
-   * @description Criar um array a partir do meu rating para repetir as estrelas no HTML
-   *
-   * @author Darllinson Azevedo
-   *
-   * @param value Rating do restaurante
-   * @returns Array com o tamanho do rating do restaurante
-   */
-  getRating(value: number): number[] {
-    return Array.from({ length: value }, (_, index) => index + 1);
-  }
 }
