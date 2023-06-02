@@ -6,7 +6,7 @@
   </div>
 
   <a
-    class="w-10 h-10 bg-white shadow-mg absolute top-4 rounded-full flex items-center justify-center"
+    class="w-10 h-10 bg-white shadow-mg absolute top-4 rounded-full flex items-center justify-center group hover:bg-primary-600 transition-all duration-300"
     [routerLink]="['/private/home']"
   >
     <svg
@@ -14,7 +14,7 @@
       width="20"
       height="20"
       viewBox="0 0 256 256"
-      class="fill-zinc-900"
+      class="fill-zinc-900 group-hover:fill-white"
     >
       <path
         d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
@@ -24,7 +24,7 @@
 
   <div class="w-full flex flex-col justify-center items-center">
     <div
-      class="w-full flex flex-col gap-4 h-fit p-6 bg-white rounded-3xl shadow-xl z-20 mt-40"
+      class="w-full flex flex-col gap-4 h-fit p-6 bg-white rounded-3xl shadow-xl z-20 mt-32 mb-10"
     >
       <div class="w-full flex justify-start items-center gap-6">
         <img
@@ -75,6 +75,13 @@
           }}</strong>
         </div>
       </div>
+    </div>
+
+    <div class="flex flex-col gap-4 w-full mb-6">
+      <app-product-card
+        *ngFor="let product of products"
+        [product]="product"
+      ></app-product-card>
     </div>
   </div>
 </div>

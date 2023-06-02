@@ -1,0 +1,57 @@
+<div
+  class="w-full h-36 bg-white shadow-xl rounded-2xl flex justify-between items-center p-4 relative"
+>
+  <div
+    class="flex flex-col justify-between items-stretch w-full h-full max-w-[190px]"
+  >
+    <h1 class="font-bold text-zinc-900 overflow-clip">
+      {{ product.name }}
+    </h1>
+    <p class="text-xs text-zinc-600">{{ product.description }}</p>
+    <strong class="text-sm font-bold text-primary-600">{{
+      product.price | currency : "R$"
+    }}</strong>
+  </div>
+  <img
+    class="w-[102px] h-[102px] rounded-2xl"
+    [src]="product.imagePath"
+    [alt]="product.name"
+  />
+  <div
+    class="w-10 h-10 flex justify-center items-center rounded-full bg-primary-600 absolute bottom-2 right-2 gap-3 hover:w-24 hover:px-2 group transition-all duration-200"
+  >
+    <div
+      class="w-5 h-5 cursor-pointer rounded-full hidden opacity-0 group-hover:opacity-100 group-hover:flex group-hover:justify-center group-hover:items-center transition-all duration-1000"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 256 256"
+        class="fill-white hover:fill-primary-200 transition-all duration-200"
+      >
+        <path
+          d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"
+        ></path>
+      </svg>
+    </div>
+    <p class="text-white hidden group-hover:block transition-all duration-500">
+      0
+    </p>
+    <div
+      class="flex justify-center items-center w-5 h-5 cursor-pointer rounded-full transition-all duration-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 256 256"
+        class="fill-white hover:fill-primary-200 transition-all duration-200"
+      >
+        <path
+          d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</div>

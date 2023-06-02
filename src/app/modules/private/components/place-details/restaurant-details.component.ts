@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ProductModel } from 'src/app/core/models/product.model';
 import { RestaurantModel } from 'src/app/core/models/restaurant.model';
 import { RestaurantsService } from 'src/app/core/services/restaurants.service';
 
@@ -12,6 +13,7 @@ export class RestaurantDetailsComponent implements OnInit {
   private restaurantId: string = this.activatedRoute.snapshot.params['id'];
 
   public restaurant!: RestaurantModel;
+  public products: ProductModel[] = [];
   public restaurantRating!: number;
   public loaded: boolean = false;
 
@@ -23,6 +25,7 @@ export class RestaurantDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getRestaurantDetails();
+    this.getProducts();
   }
 
   /**
@@ -38,11 +41,28 @@ export class RestaurantDetailsComponent implements OnInit {
       .subscribe((restaurant) => {
         this.restaurant = restaurant;
         this.restaurantRating = Math.floor(this.restaurant.rating);
-        this.loaded = true;
 
         this.spinnerService.hide();
+      });
+  }
 
-        console.log(restaurant);
+  /**
+   * @description Recuperar produtos do restaurante
+   *
+   * @author Darllinson Azevedo
+   */
+  getProducts() {
+    this.spinnerService.show();
+
+    this.restaurantsService
+      .getRestaurantProducts(this.restaurantId)
+      .subscribe((products) => {
+        this.products = products;
+        this.loaded = true;
+
+        console.log(this.products);
+
+        this.spinnerService.hide();
       });
   }
 }
