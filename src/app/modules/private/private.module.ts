@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { RestaurantDetailsComponent } from './components/place-details/restaurant-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductCardComponent } from './components/place-details/components/product-card/product-card.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ProductCardComponent } from './components/place-details/components/prod
     HomeComponent,
     RestaurantDetailsComponent,
     ProductCardComponent,
+    UserProfileComponent
   ],
 })
 export class PrivateModule {}
