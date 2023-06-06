@@ -4,10 +4,10 @@ import { PrivateComponent } from './private.component';
 import { PrivateRoutingModule } from './private-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { RestaurantDetailsComponent } from './components/place-details/restaurant-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductCardComponent } from './components/place-details/components/product-card/product-card.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { RestaurantDetailsComponent } from './components/restaurant-details/restaurant-details.component';
+import { ProductCardComponent } from './components/restaurant-details/components/product-card/product-card.component';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     HomeComponent,
     RestaurantDetailsComponent,
     ProductCardComponent,
-    UserProfileComponent
+    UserProfileComponent,
   ],
 })
 export class PrivateModule {}

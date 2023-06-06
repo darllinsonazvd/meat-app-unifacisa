@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/core/models/user.model';
 import { LoginService } from 'src/app/core/services/login.service';
-
-interface MenuOptionsModel {
-  icon: string;
-  name: string;
-  url: string;
-}
+import { MenuOptionsModel } from './models/menu-options.model';
 
 @Component({
   selector: 'app-user-profile',
