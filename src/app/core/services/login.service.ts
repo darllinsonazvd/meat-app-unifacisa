@@ -17,7 +17,7 @@ export class LoginService {
           "password": "admin123"
         }]`
   );
-  private userAuthenticated: UserModel | null = JSON.parse(
+  public userAuthenticated: UserModel | null = JSON.parse(
     this.localStorageService.getItem(LocalStorageKeys.USER_AUTHENTICATED) ||
       'null'
   );

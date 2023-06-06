@@ -1,0 +1,57 @@
+<div class="w-full h-screen bg-primary-50 p-4">
+  <div
+    class="w-full h-1/3 bg-primary-600 flex flex-col justify-start items-center pt-6 absolute top-0 left-0 z-0"
+  >
+    <img
+      src="assets/img/logo/meat-logo-white.png"
+      alt="Meat logo"
+      class="w-36 cursor-pointer"
+      [routerLink]="['/private/home']"
+    />
+  </div>
+
+  <div
+    class="w-full flex flex-col justify-center items-center gap-4 bg-white relative z-30 mt-24 rounded-2xl p-6 shadow-lg md:flex-row md:justify-start md:gap-8"
+  >
+    <img
+      src="assets/img/profile/user.jpg"
+      class="w-20 rounded-full shadow-lg md:w-32"
+    />
+    <div
+      class="w-full flex flex-col justify-center items-center gap-2 md:w-auto md:items-start"
+    >
+      <h1 class="text-zinc-900 font-bold md:text-4xl">
+        {{ getUserInfo()?.name }}
+      </h1>
+      <p class="text-zinc-600 text-sm md:text-base">
+        {{ getUserInfo()?.email }}
+      </p>
+    </div>
+  </div>
+
+  <div class="w-full mt-6 flex flex-col gap-4 md:flex-row">
+    <div
+      class="w-full p-4 bg-white flex justify-start items-center rounded-lg shadow-lg cursor-pointer group transition-colors"
+      *ngFor="let item of menuOptions"
+    >
+      <div class="flex justify-start items-center gap-2 flex-1">
+        <img [src]="item.icon" class="w-6 h-6" />
+        <p class="font-semibold text-zinc-900">{{ item.name }}</p>
+      </div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 256 256"
+        class="w-5 h-5 fill-zinc-900 duration-300 group-hover:fill-primary-600"
+      >
+        <path
+          d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<app-navbar></app-navbar>
