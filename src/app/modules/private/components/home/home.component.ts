@@ -55,13 +55,4 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
-  /**
-   * @description Desconectar usuário da aplicação
-   *
-   * @author Darllinson Azevedo
-   */
-  logout() {
-    this.loginService.logout();
-  }
 }

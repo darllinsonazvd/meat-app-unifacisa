@@ -33,6 +33,7 @@
     <div
       class="w-full p-4 bg-white flex justify-start items-center rounded-lg shadow-lg cursor-pointer group transition-colors"
       *ngFor="let item of menuOptions"
+      (click)="navigateByUrl(item.url)"
     >
       <div class="flex justify-start items-center gap-2 flex-1">
         <img [src]="item.icon" class="w-6 h-6" />
