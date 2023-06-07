@@ -4,6 +4,7 @@ import { UserModel } from '../models/user.model';
 import { ToastService } from './toast.service';
 import { LocalStorageService } from './local-storage.service';
 import { LocalStorageKeys } from '../enums/local-storage-keys.enum';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,8 @@ export class LoginService {
 
   constructor(
     private toastService: ToastService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private router: Router
   ) {}
 
   /**
@@ -87,5 +89,6 @@ export class LoginService {
       LocalStorageKeys.USER_AUTHENTICATED,
       JSON.stringify(this.userAuthenticated)
     );
+    this.router.navigate(['/login']);
   }
 }
