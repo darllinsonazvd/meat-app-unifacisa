@@ -7,11 +7,13 @@
   <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
 </p>
 
-# meat - Angular Application
+# Para todas as fomes - meat
 
-Aplicação de delivery de comida desenvolvida usando HTML, CSS e TypeScript usando o framework Angular 15 e o Tailwind CSS como biblioteca de estilização.
+Aplicação de delivery de comida desenvolvida usando HTML, CSS e TypeScript usando o framework Angular 15 e Tailwind CSS como biblioteca de estilização.
 
-Desenvolvido a fim de ser utilizado como avaliação da competência de Programar Web Frontend do curso de Sistemas de Informação da Unifacisa.
+Desenvolvido a fim de ser utilizado como avaliação da competência "Programar Web Frontend" do curso de Sistemas de Informação da Unifacisa.
+
+A aplicação está hospedada na Vercel e você pode utilizá-la [clicando aqui](meat-app-unifacisa.vercel.app/login).
 
 ## Getting Started ▶️
 
@@ -23,6 +25,10 @@ Desenvolvido a fim de ser utilizado como avaliação da competência de Programa
 
 `ng serve` ou `npm start`
 
+## Protótipo 🎨
+
+Você pode visualizar o protótipo da aplicação [clicando aqui](https://www.figma.com/community/file/1241150026268704392/meat---Prot%C3%B3tipo).
+
 ## Tecnologias 🚀
 
 - HTML
@@ -30,4 +36,5 @@ Desenvolvido a fim de ser utilizado como avaliação da competência de Programa
 - TypeScript
 - Angular
 - Tailwind CSS
+- Vercel
 - JSON Server
