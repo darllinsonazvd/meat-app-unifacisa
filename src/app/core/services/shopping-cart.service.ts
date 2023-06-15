@@ -33,7 +33,7 @@ export class ShoppingCartService {
       LocalStorageKeys.CART_ITEMS,
       JSON.stringify(this.products)
     );
-    this.router.navigate(['/establishments']);
+    this.toastService.showSuccess(3000, 'Carrinho limpo!', '');
   }
 
   /**

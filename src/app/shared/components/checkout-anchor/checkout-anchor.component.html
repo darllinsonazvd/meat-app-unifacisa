@@ -21,6 +21,7 @@
 
   <div
     class="w-4 h-4 bg-primary-50 rounded-full flex justify-center items-center absolute top-1.5 right-1.5"
+    *ngIf="getTotalProductsQty() > 0"
   >
     <p class="font-bold text-xs text-primary-600">
       {{ getTotalProductsQty() }}
