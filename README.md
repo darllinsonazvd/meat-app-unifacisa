@@ -13,7 +13,7 @@ Aplicação de delivery de comida desenvolvida usando HTML, CSS e TypeScript usa
 
 Desenvolvido a fim de ser utilizado como avaliação da competência "Programar Web Frontend" do curso de Sistemas de Informação da Unifacisa.
 
-A aplicação está hospedada na Vercel e você pode utilizá-la [clicando aqui](meat-app-unifacisa.vercel.app/login).
+A aplicação está hospedada na Vercel e você pode utilizá-la [clicando aqui](https://meat-app-unifacisa.vercel.app/login).
 
 ## Getting Started ▶️
 
