@@ -1,0 +1,8 @@
+<h1 class="text-primary-600 font-bold text-4xl mb-4">Checkout</h1>
+
+<ul>
+  <li *ngFor="let product of cartProducts" class="flex gap-1">
+    <strong>{{ product.quantity }}x</strong>
+    <p>{{ product.product.name }}</p>
+  </li>
+</ul>

@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { RestaurantDetailsComponent } from './components/restaurant-details/restaurant-details.component';
 import { ProductCardComponent } from './components/restaurant-details/components/product-card/product-card.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { ProductCardComponent } from './components/restaurant-details/components
     RestaurantDetailsComponent,
     ProductCardComponent,
     UserProfileComponent,
+    CheckoutComponent,
   ],
 })
 export class PrivateModule {}

@@ -1,5 +1,6 @@
 <a
-  class="w-12 h-12 rounded-full bg-primary-600 fixed bottom-[72px] right-3 flex justify-center items-center cursor-pointer"
+  class="w-12 h-12 rounded-full bg-primary-600 fixed bottom-[72px] right-3 flex justify-center items-center cursor-pointer hover:bg-primary-700 transition-colors duration-300"
+  [routerLink]="['/private/checkout']"
 >
   <svg
     width="24"
@@ -17,4 +18,12 @@
       stroke-linejoin="round"
     />
   </svg>
+
+  <div
+    class="w-4 h-4 bg-primary-50 rounded-full flex justify-center items-center absolute top-1.5 right-1.5"
+  >
+    <p class="font-bold text-xs text-primary-600">
+      {{ getTotalProductsQty() }}
+    </p>
+  </div>
 </a>
