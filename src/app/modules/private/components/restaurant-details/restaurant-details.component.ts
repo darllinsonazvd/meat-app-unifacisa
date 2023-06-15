@@ -60,8 +60,6 @@ export class RestaurantDetailsComponent implements OnInit {
         this.products = products;
         this.loaded = true;
 
-        console.log(this.products);
-
         this.spinnerService.hide();
       });
   }

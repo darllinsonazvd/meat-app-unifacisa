@@ -22,6 +22,7 @@
   >
     <div
       class="w-5 h-5 cursor-pointer rounded-full hidden opacity-0 group-hover:opacity-100 group-hover:flex group-hover:justify-center group-hover:items-center transition-all duration-1000"
+      (click)="decreaseQty(product)"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,10 +37,11 @@
       </svg>
     </div>
     <p class="text-white hidden group-hover:block transition-all duration-500">
-      0
+      {{ getProductQty(product) }}
     </p>
     <div
       class="flex justify-center items-center w-5 h-5 cursor-pointer rounded-full transition-all duration-300"
+      (click)="addProduct(product)"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
