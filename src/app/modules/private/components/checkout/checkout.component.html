@@ -58,12 +58,7 @@
   class="textarea textarea-bordered textarea-lg w-full max-w-xl"
 ></textarea>
 
-<ul>
-  <li *ngFor="let product of products()" class="flex gap-1">
-    <strong>{{ product.quantity }}x</strong>
-    <p>{{ product.product.name }}</p>
-  </li>
-</ul>
+<app-cart-item-card [products]="products()"></app-cart-item-card>
 
 <a class="underline cursor-pointer" (click)="clearShoppingCart()"
   >Limpar itens do carrinho</a

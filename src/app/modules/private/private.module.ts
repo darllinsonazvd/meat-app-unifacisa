@@ -9,6 +9,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { RestaurantDetailsComponent } from './components/restaurant-details/restaurant-details.component';
 import { ProductCardComponent } from './components/restaurant-details/components/product-card/product-card.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CartItemCardComponent } from './components/checkout/components/cart-item-card/cart-item-card.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ProductCardComponent,
     UserProfileComponent,
     CheckoutComponent,
+    CartItemCardComponent,
   ],
 })
 export class PrivateModule {}
