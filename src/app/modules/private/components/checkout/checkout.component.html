@@ -1,65 +1,109 @@
-<!-- 
+<!--
   @Pedro *SEMPRE* englobar todo o código com uma div
   com as classes "w-full" e "h-screen"
   para a aplicação atender as dimensões da tela
 
   (menos em componentes usuais, ou seja, que não será uma tela especificamente)
  -->
-
-<h1 class="text-black font-bold text-4xl mb-10">Checkout</h1>
-<h1 class="text-black font-bold text-xl mb-4">Como quer receber ?</h1>
-<div class="flex">
-  <!-- Botão radio para "delivery" -->
-  <div class="mb-0.5 mr-10 inline-block min-h-[1.5rem] pl-[1.5rem]">
-    <input
-      class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
-      type="radio"
-      name="delivery"
-      id="delivery"
-      [value]="true"
-    />
-    <label
-      class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
-      for="delivery"
-      >Entrega</label
+<div class="w-full h-screen p-4">
+  <div class="flex">
+    <a
+      class="w-10 h-10 bg-white shadow-mg absolute top-4 rounded-full flex items-center justify-center group hover:bg-primary-600 transition-all duration-300"
+      [routerLink]="['/private/home']"
     >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 256 256"
+        class="fill-zinc-900 group-hover:fill-white"
+      >
+        <path
+          d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
+        ></path>
+      </svg>
+    </a>
+    <h1 class="text-black font-bold text-4xl mb-10 ml-16">Checkout</h1>
   </div>
 
-  <!-- Botão radio para "retirada" -->
-  <div class="mb-0.5 mr-10 inline-block min-h-[1.5rem] pl-[1.5rem]">
-    <input
-      class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
-      type="radio"
-      name="withdraw"
-      id="withdraw"
-      [value]="false"
-    />
-    <label
-      class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
-      for="withdraw"
-      >Retirada</label
-    >
+  <h1 class="text-black font-bold text-xl mb-4">Como quer receber ?</h1>
+  <div class="flex mb-6">
+    <!-- Botão radio para "delivery" -->
+    <div class="mb-0.5 mr-10 inline-block min-h-[1.5rem] pl-[1.5rem]">
+      <input
+        class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+        type="radio"
+        name="delivery"
+        id="delivery"
+        [value]="true"
+      />
+      <label
+        class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+        for="delivery"
+        >Entrega</label
+      >
+    </div>
+
+    <!-- Botão radio para "retirada" -->
+    <div class="mb-0.5 mr-10 inline-block min-h-[1.5rem] pl-[1.5rem]">
+      <input
+        class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+        type="radio"
+        name="withdraw"
+        id="withdraw"
+        [value]="false"
+      />
+      <label
+        class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+        for="withdraw"
+        >Retirada</label
+      >
+    </div>
   </div>
+  <div
+    class="w-full h-20 bg-white rounded-3xl shadow-lg p-2 sm:w-64 lg:w-80 flex"
+  >
+    <img src="../../../../../assets/img/restaurants/map.png" alt="map" />
+    <div class="pt-2 pl-2">
+      <h1 class="font-bold">Sem endereço</h1>
+      <p class="">Adicione seu endereço</p>
+    </div>
+    <button class="ml-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="#000000"
+        viewBox="0 0 256 256"
+      >
+        <path
+          d="M178.83,130.83l-80,80a4,4,0,0,1-5.66-5.66L170.34,128,93.17,50.83a4,4,0,0,1,5.66-5.66l80,80A4,4,0,0,1,178.83,130.83Z"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <div class=""></div>
+  <h1 class="text-black font-bold text-xl mb-6 mt-10">
+    Qual a forma de pagamento?
+  </h1>
+  <div class="flex">
+    <div>
+      <p>
+        no lugar daqueles cards vão ser os radios buttons ja com as bandeiras,
+        essa parte eu (darllinson) faço
+      </p>
+    </div>
+  </div>
+
+  <h1 class="text-black font-bold text-xl mb-6">Observações</h1>
+  <textarea
+    placeholder="ex: Bem gelado por favor... e cuidado com a embalagem..."
+    class="textarea textarea-bordered textarea-lg w-full max-w-xl"
+  ></textarea>
+
+  <app-cart-item-card [products]="products()"></app-cart-item-card>
+
+  <a class="underline cursor-pointer" (click)="clearShoppingCart()"
+    >Limpar itens do carrinho</a
+  >
 </div>
-<div class=""></div>
-<h1 class="text-black font-bold text-xl mb-6">Qual a forma de pagamento?</h1>
-<div class="flex">
-  <div>
-    <p>
-      no lugar daqueles cards vão ser os radios buttons ja com as bandeiras,
-      essa parte eu (darllinson) faço
-    </p>
-  </div>
-</div>
-
-<h1 class="text-black font-bold text-xl mb-6">Observações</h1>
-<textarea
-  placeholder="ex: Bem gelado por favor... e cuidado com a embalagem..."
-  class="textarea textarea-bordered textarea-lg w-full max-w-xl"
-></textarea>
-
-<app-cart-item-card [products]="products()"></app-cart-item-card>
-
-<a class="underline cursor-pointer" (click)="clearShoppingCart()"
-  >Limpar itens do carrinho</a
->
