@@ -13,10 +13,9 @@ import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service
 export class RestaurantDetailsComponent implements OnInit {
   public restaurantId: string = this.activatedRoute.snapshot.params['id'];
 
-  public restaurant!: RestaurantModel;
+  public restaurant: RestaurantModel | undefined;
   public products: ProductModel[] = [];
   public restaurantRating!: number;
-  public loaded: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -64,7 +63,6 @@ export class RestaurantDetailsComponent implements OnInit {
       .getRestaurantProducts(this.restaurantId)
       .subscribe((products) => {
         this.products = products;
-        this.loaded = true;
 
         this.spinnerService.hide();
       });
