@@ -6,7 +6,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { RestaurantsService } from 'src/app/core/services/restaurants.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { LocalStorageKeys } from 'src/app/core/enums/local-storage-keys.enum';
-import { RestaurantModel } from 'src/app/core/models/restaurant.model';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AddressModel } from './components/add-address/models/address.model';
 
 @Component({
   selector: 'app-checkout',
@@ -55,6 +56,7 @@ export class CheckoutComponent implements OnInit {
       imgUrl: 'assets/img/methods/visa.svg',
     },
   ];
+  public userAddress: AddressModel | undefined;
 
   private restaurantId: string | null = this.localStorageService.getItem(
     LocalStorageKeys.CART_ITEMS_PLACE_ID
@@ -67,7 +69,24 @@ export class CheckoutComponent implements OnInit {
     private localStorageService: LocalStorageService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.foundProductsInLocalStorage();
+
+    const address: AddressModel | null = JSON.parse(
+      this.localStorageService.getItem(LocalStorageKeys.USER_ADDRESS) || 'null'
+    );
+    if (address) this.userAddress = address;
+  }
+
+  /**
+   * @description Recuperar lista de produtos do localStorage
+   *
+   * @author Darllinson Azevedo
+   */
+  foundProductsInLocalStorage() {
+    if (!this.products().length)
+      this.shoppingCartService.foundProductsInLocalStorage();
+  }
 
   /**
    * @description Recuperar lista de produtos no carrinho

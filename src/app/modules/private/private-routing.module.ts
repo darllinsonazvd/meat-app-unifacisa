@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RestaurantDetailsComponent } from './components/restaurant-details/restaurant-details.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AddAddressComponent } from './components/checkout/components/add-address/add-address.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'checkout',
         component: CheckoutComponent,
+      },
+      {
+        path: 'checkout/add-address',
+        component: AddAddressComponent,
       },
     ],
   },

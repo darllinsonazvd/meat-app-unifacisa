@@ -24,8 +24,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private spinnerService: NgxSpinnerService,
     private toastService: ToastService,
-    private restaurantsService: RestaurantsService,
-    private loginService: LoginService
+    private restaurantsService: RestaurantsService
   ) {}
 
   ngOnInit() {

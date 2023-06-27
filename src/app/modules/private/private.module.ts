@@ -10,6 +10,9 @@ import { RestaurantDetailsComponent } from './components/restaurant-details/rest
 import { ProductCardComponent } from './components/restaurant-details/components/product-card/product-card.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CartItemCardComponent } from './components/checkout/components/cart-item-card/cart-item-card.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddAddressComponent } from './components/checkout/components/add-address/add-address.component';
+import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
 
 @NgModule({
   imports: [
@@ -18,6 +21,8 @@ import { CartItemCardComponent } from './components/checkout/components/cart-ite
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
+    NgxPhoneMaskBrModule,
   ],
   declarations: [
     PrivateComponent,
@@ -27,6 +32,7 @@ import { CartItemCardComponent } from './components/checkout/components/cart-ite
     UserProfileComponent,
     CheckoutComponent,
     CartItemCardComponent,
+    AddAddressComponent,
   ],
 })
 export class PrivateModule {}

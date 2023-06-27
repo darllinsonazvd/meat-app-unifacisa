@@ -1,0 +1,178 @@
+<div class="w-full h-screen p-4 bg-white">
+  <!-- Header -->
+  <div class="w-full flex flex-col justify-start gap-2">
+    <div class="flex justify-start items-center gap-4">
+      <a
+        class="w-11 h-11 bg-zinc-100 flex justify-center items-center rounded-full group hover:bg-primary-600 transition-colors duration-300 cursor-pointer"
+        [routerLink]="['../']"
+      >
+        <svg
+          class="w-6 h-6 fill-zinc-900 group-hover:fill-zinc-50"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
+          ></path>
+        </svg>
+      </a>
+      <h1 class="text-zinc-700 font-bold text-2xl">Informações de entrega</h1>
+    </div>
+    <p class="text-sm text-zinc-600">
+      Informe um endereço onde deseja receber seu pedido. Campos com
+      <span class="text-error">(*)</span> são obrigatórios.
+    </p>
+  </div>
+
+  <!-- Formulário -->
+  <form
+    [formGroup]="addressForm"
+    class="w-full flex flex-col gap-6 mt-8 max-w-3xl justify-center items-center mx-auto"
+  >
+    <div class="w-full flex flex-col gap-4 justify-start">
+      <!-- Bairro -->
+      <div class="relative" data-te-input-wrapper-init>
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          id="neighborhood"
+          placeholder="ex: Centro"
+          formControlName="neighborhood"
+        />
+        <label
+          for="neighborhood"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Bairro *
+        </label>
+      </div>
+      <!-- Logradouro -->
+      <div class="w-full flex flex-col gap-2 justify-start">
+        <div class="relative" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="street"
+            placeholder="ex: Rua 31 de março"
+            formControlName="street"
+          />
+          <label
+            for="street"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Logradouro *
+          </label>
+        </div>
+      </div>
+      <div class="w-full flex gap-4">
+        <!-- Número -->
+        <div class="relative w-1/2" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="number"
+            placeholder="ex: 1524"
+            formControlName="number"
+          />
+          <label
+            for="number"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Número
+          </label>
+        </div>
+        <!-- Complemento -->
+        <div class="relative w-1/2" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="complement"
+            placeholder="ex: Bloco A, ap. 101"
+            formControlName="complement"
+          />
+          <label
+            for="complement"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Complemento
+          </label>
+        </div>
+      </div>
+      <!-- Referência -->
+      <div class="w-full flex flex-col gap-2 justify-start">
+        <div class="relative" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="reference"
+            placeholder="ex: Perto do estádio Amigão"
+            formControlName="reference"
+          />
+          <label
+            for="reference"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Referência
+          </label>
+        </div>
+      </div>
+      <div class="w-full flex gap-4">
+        <!-- Nome -->
+        <div class="relative w-1/2" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="name"
+            placeholder="ex: João"
+            formControlName="name"
+          />
+          <label
+            for="name"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Nome *
+          </label>
+        </div>
+        <!-- Sobrenome -->
+        <div class="relative w-1/2" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="lastName"
+            placeholder="ex: da Silva"
+            formControlName="lastName"
+          />
+          <label
+            for="lastName"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Sobrenome *
+          </label>
+        </div>
+      </div>
+      <!-- Telefone com DDD -->
+      <div class="w-full flex flex-col gap-2 justify-start">
+        <div class="relative" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="phonenumber"
+            placeholder="ex: (83) 99945-1425"
+            formControlName="phoneNumber"
+            ngxPhoneMaskBr
+          />
+          <label
+            for="phonenumber"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Telefone com DDD *
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="w-full fixed bottom-0 left-0 p-4 mx-auto">
+    <button
+      class="w-full font-bold text-white bg-primary-600 py-3 text-sm rounded-lg hover:bg-primary-700 transition-colors duration-300 disabled:bg-zinc-200 disabled:text-zinc-900"
+      [disabled]="addressForm.invalid"
+      (click)="save()"
+    >
+      Continuar
+    </button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

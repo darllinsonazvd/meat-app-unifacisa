@@ -9,6 +9,7 @@ export class PrivateComponent implements OnInit {
   constructor(private shoppingCartService: ShoppingCartService) {}
 
   ngOnInit() {
-    this.shoppingCartService.foundProductsInLocalStorage();
+    if (!this.shoppingCartService.products.length)
+      this.shoppingCartService.foundProductsInLocalStorage();
   }
 }

@@ -21,6 +21,7 @@
     "angular-animations": "^0.11.0",
     "daisyui": "^2.52.0",
     "ngx-bootstrap": "^10.2.0",
+    "ngx-phone-mask-br": "^1.0.3",
     "ngx-spinner": "^15.0.1",
     "ngx-toastr": "^16.1.1",
     "rxjs": "~7.8.0",
