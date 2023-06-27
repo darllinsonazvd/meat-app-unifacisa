@@ -142,13 +142,10 @@ export class CheckoutComponent implements OnInit {
    * @author Darllinson Azevedo
    */
   getRestaurantDetails() {
-    this.spinnerService.show();
-
     this.restaurantsService
       .getRestaurantDetails(this.restaurantId || '')
       .subscribe((restaurant) => {
         this.restaurant = restaurant;
-        this.spinnerService.hide();
       });
   }
 
