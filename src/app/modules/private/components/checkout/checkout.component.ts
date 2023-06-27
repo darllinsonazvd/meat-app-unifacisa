@@ -193,6 +193,7 @@ export class CheckoutComponent implements OnInit {
 
     const orderRaw = this.orderForm.getRawValue();
     const order: OrderModel = {
+      dateTime: new Date(),
       userId: this.userAddress?.phoneNumber || '',
       restaurant: this.restaurant || null,
       isDelivery: orderRaw.isDelivery || false,
@@ -210,6 +211,7 @@ export class CheckoutComponent implements OnInit {
         : null,
       paymentMethod: orderRaw.paymentMethod || this.paymentMethods[0],
       notes: orderRaw.notes,
+      products: this.products(),
     };
 
     this.restaurantsService.sendOrder(order).subscribe(() => {});

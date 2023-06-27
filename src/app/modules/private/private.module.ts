@@ -15,6 +15,7 @@ import { AddAddressComponent } from './components/checkout/components/add-addres
 import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
 import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { OrderCardComponent } from './components/my-orders/components/order-card/order-card.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     AddAddressComponent,
     OrderPlacedComponent,
     MyOrdersComponent,
+    OrderCardComponent,
   ],
 })
 export class PrivateModule {}
