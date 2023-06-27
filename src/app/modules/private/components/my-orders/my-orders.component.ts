@@ -42,5 +42,7 @@ export class MyOrdersComponent implements OnInit {
         this.spinnerService.hide();
       });
     }
+
+    this.spinnerService.hide();
   }
 }
