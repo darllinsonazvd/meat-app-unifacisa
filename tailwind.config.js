@@ -6,6 +6,7 @@ module.exports = {
   ],
   daisyui: {
     themes: false,
+    prefix: "daisy-",
   },
   darkMode: "class",
   theme: {

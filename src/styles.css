@@ -28,6 +28,22 @@
   color: #fff;
 }
 
+.modal-dialog .add-address-modal {
+  max-width: 576px;
+}
+.modal-dialog .add-address-modal .modal-content {
+  border-radius: 24px;
+}
+
+@media (max-width: 575px) {
+  .modal-dialog .add-address-modal {
+    margin: 0 !important;
+  }
+  .modal-dialog .add-address-modal .modal-content {
+    border-radius: 0px;
+  }
+}
+
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
 /* position */

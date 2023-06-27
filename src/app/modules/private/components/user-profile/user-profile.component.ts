@@ -16,11 +16,6 @@ export class UserProfileComponent implements OnInit {
       url: '/private/orders',
     },
     {
-      icon: 'assets/img/profile/address.svg',
-      name: 'Meus endereços',
-      url: '/private/addresses',
-    },
-    {
       icon: 'assets/img/profile/sign-out.svg',
       name: 'Sair',
       url: '/login',

@@ -1,4 +1,4 @@
-<div class="w-full h-screen bg-primary-50 px-3" *ngIf="loaded">
+<div class="w-full h-screen bg-primary-50 px-3" *ngIf="restaurant">
   <div class="w-full h-56 bg-cover-imgBig bg-cover absolute top-0 left-0">
     <div
       class="w-full h-56 bg-gradient-to-b from-black/20 to-transparent absolute top-0 left-0"
@@ -77,12 +77,19 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-4 w-full mb-6 md:flex-row">
+    <div class="flex flex-col gap-4 w-full mb-32 md:flex-row">
       <app-product-card
         class="w-full"
         *ngFor="let product of products"
         [product]="product"
+        [restaurantId]="restaurantId"
       ></app-product-card>
     </div>
   </div>
 </div>
+
+<app-checkout-anchor></app-checkout-anchor>
+
+<app-navbar></app-navbar>
+
+<router-outlet></router-outlet>

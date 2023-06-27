@@ -1,0 +1,57 @@
+<div class="w-full flex flex-col gap-2">
+  <div
+    *ngFor="let product of products"
+    class="w-full bg-white p-4 border border-zinc-200 flex items-center justify-start gap-4 rounded-3xl"
+  >
+    <img
+      class="w-14 rounded-lg"
+      [src]="product.product.imagePath"
+      [alt]="product.product.name"
+    />
+
+    <div class="w-full flex flex-col justify-between items-start">
+      <strong class="text-sm">{{ product.product.name }}</strong>
+      <div class="w-full flex justify-between items-center">
+        <strong class="text-sm text-primary-600">{{
+          product.product.price | currency : "R$"
+        }}</strong>
+
+        <div class="w-28 flex justify-between items-center">
+          <div
+            class="w-5 h-5 cursor-pointer rounded-full opacity-100 flex justify-center items-center"
+            (click)="decreaseQty(product.product)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 256 256"
+              class="fill-zinc-900 hover:fill-primary-600 transition-all duration-200"
+            >
+              <path
+                d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"
+              ></path>
+            </svg>
+          </div>
+          <p>{{ product.quantity }}</p>
+          <div
+            class="flex justify-center items-center w-5 h-5 cursor-pointer rounded-full transition-all duration-300"
+            (click)="addProduct(product.product)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 256 256"
+              class="fill-zinc-900 hover:fill-primary-600 transition-all duration-200"
+            >
+              <path
+                d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

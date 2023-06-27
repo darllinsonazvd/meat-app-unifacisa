@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RestaurantModel } from '../models/restaurant.model';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ProductModel } from '../models/product.model';
+import { OrderModel } from 'src/app/modules/private/components/checkout/models/order.model';
 
 @Injectable({
   providedIn: 'root',
@@ -49,6 +50,25 @@ export class RestaurantsService {
   getRestaurantProducts(id: string): Observable<ProductModel[]> {
     return this.httpClient.get<ProductModel[]>(
       `${environment.apiUrl}/restaurants/${id}/menu`
+    );
+  }
+
+  /**
+   * @description Enviar pedido do usuário para o restaurante
+   *
+   * @author Darllinson Azevedo
+   *
+   * @param order Model do do usuário
+   * @returns Confirmação de envio do pedido
+   */
+  sendOrder(order: OrderModel): Observable<OrderModel> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.httpClient.post<OrderModel>(
+      `${environment.apiUrl}/orders`,
+      order,
+      { headers }
     );
   }
 }

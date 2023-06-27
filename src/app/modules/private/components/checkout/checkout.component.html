@@ -1,0 +1,328 @@
+<div class="w-full h-screen p-4 bg-white">
+  <!-- Header -->
+  <div class="flex justify-start items-center gap-4">
+    <a
+      class="w-11 h-11 bg-zinc-100 flex justify-center items-center rounded-full group hover:bg-primary-600 transition-colors duration-300 cursor-pointer"
+      [routerLink]="['../home']"
+    >
+      <svg
+        class="w-6 h-6 fill-zinc-900 group-hover:fill-zinc-50"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 256 256"
+      >
+        <path
+          d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
+        ></path>
+      </svg>
+    </a>
+    <h1 class="text-zinc-700 font-bold text-2xl">Checkout</h1>
+  </div>
+
+  <ng-container *ngIf="products().length">
+    <form [formGroup]="orderForm" class="w-full flex flex-col gap-10 mt-8">
+      <!-- Formulário do pedido -->
+      <div class="w-full flex flex-col gap-8">
+        <!-- Opções de entrega -->
+        <div class="w-full flex flex-col gap-4">
+          <h1 class="text-zinc-900 font-bold text-lg">Como quer receber?</h1>
+
+          <div class="w-full flex justify-start items-center gap-6">
+            <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+              <input
+                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                type="radio"
+                name="isDelivery"
+                id="delivery"
+                formControlName="isDelivery"
+                [value]="true"
+              />
+              <label
+                class="font-medium ml-1 text-zinc-900 hover:cursor-pointer"
+                for="delivery"
+              >
+                Delivery
+              </label>
+            </div>
+
+            <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+              <input
+                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                type="radio"
+                name="isDelivery"
+                id="withdraw"
+                formControlName="isDelivery"
+                [value]="false"
+              />
+              <label
+                class="font-medium ml-1 text-zinc-900 hover:cursor-pointer"
+                for="withdraw"
+              >
+                Retirar
+              </label>
+            </div>
+          </div>
+
+          <!-- Selecione o endereço -->
+          <div
+            class="w-full h-fit p-3 bg-zinc-50 flex justify-start items-center shadow-lg rounded-3xl group hover:shadow-xl transition-all cursor-pointer"
+            [routerLink]="['add-address']"
+            *ngIf="!userAddress"
+          >
+            <div class="w-full flex-1 flex justify-start items-center gap-4">
+              <img
+                class="w-16"
+                src="assets/img/checkout/map.png"
+                alt="map icon"
+              />
+
+              <div class="w-full flex flex-col">
+                <strong class="text-zinc-900">Sem endereço</strong>
+                <p class="text-sm text-zinc-600">Adicione seu endereço</p>
+              </div>
+            </div>
+
+            <svg
+              class="stroke-zinc-600 group-hover:stroke-primary-600"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.91 19.92L15.43 13.4C16.2 12.63 16.2 11.37 15.43 10.6L8.91 4.08002"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <!-- Endereço cadastrado -->
+          <div
+            class="w-full flex justify-start items-start bg-white border border-zinc-400 p-4 rounded-3xl relative mt-2"
+            *ngIf="userAddress && orderForm.controls.isDelivery.value"
+          >
+            <div
+              class="w-fit py-1 px-2 bg-primary-600 rounded-lg flex justify-center items-center absolute -top-3"
+            >
+              <strong class="text-xs text-white">endereço de entrega</strong>
+            </div>
+
+            <div class="w-full flex flex-col gap-2">
+              <strong
+                >{{ userAddress.street }},
+                {{ userAddress.number || "S/N" }}</strong
+              >
+              <p>{{ userAddress.name }} {{ userAddress.lastName }}</p>
+              <strong class="text-sm">{{ userAddress.neighborhood }}</strong>
+            </div>
+
+            <div
+              class="w-5 h-5 cursor-pointer group daisy-tooltip daisy-tooltip-left"
+              data-tip="Editar"
+              [routerLink]="['add-address']"
+            >
+              <svg
+                class="stroke-primary-600 group-hover:stroke-primary-700"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.0514 3.00002L4.20976 10.2417C3.95142 10.5167 3.70142 11.0584 3.65142 11.4334L3.34309 14.1333C3.23476 15.1083 3.93476 15.775 4.90142 15.6084L7.58476 15.15C7.95976 15.0834 8.48476 14.8084 8.74309 14.525L15.5848 7.28335C16.7681 6.03335 17.3014 4.60835 15.4598 2.86668C13.6264 1.14168 12.2348 1.75002 11.0514 3.00002Z"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9.90833 4.20801C10.083 5.32539 10.6238 6.35312 11.4458 7.12988C12.2679 7.90664 13.3245 8.38845 14.45 8.49967M2.5 18.333H17.5"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Endereço cadastrado -->
+          <div
+            class="w-full flex justify-start items-start bg-white border border-zinc-400 p-4 rounded-3xl relative mt-2"
+            *ngIf="userAddress && !orderForm.controls.isDelivery.value"
+          >
+            <div
+              class="w-fit py-1 px-2 bg-primary-100 rounded-lg flex justify-center items-center absolute -top-3"
+            >
+              <strong class="text-xs text-primary-600"
+                >endereço de retirada</strong
+              >
+            </div>
+
+            <div class="w-full flex flex-col gap-2">
+              <strong>Rua Eng. Saturnino de Brito Filho, 850</strong>
+              <p>Próximo ao estádio Amigão</p>
+              <strong class="text-sm">Catolé</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Métodos de pagamento -->
+        <div class="w-full flex flex-col gap-4">
+          <h1 class="text-zinc-900 font-bold text-lg">
+            Qual a forma de pagamento?
+          </h1>
+
+          <div class="w-full flex gap-4 justify-start items-center flex-wrap">
+            <div
+              class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]"
+              *ngFor="let method of paymentMethods"
+            >
+              <input
+                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                type="radio"
+                name="paymentMethod"
+                [id]="method.id"
+                formControlName="paymentMethod"
+                [value]="method"
+              />
+              <label
+                class="hover:cursor-pointer flex justify-center items-center ml-0.5 daisy-tooltip"
+                for="{{ method.id }}"
+                [attr.data-tip]="method.name | titlecase"
+              >
+                <img class="w-9" [src]="method.imgUrl" [alt]="method.name" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Itens e resumo do pedido -->
+      <div class="w-full flex flex-col gap-8">
+        <!-- Itens do pedido -->
+        <div class="w-full flex flex-col gap-4">
+          <h1 class="text-zinc-900 font-bold text-lg">Itens do pedido</h1>
+          <app-cart-item-card [products]="products()"></app-cart-item-card>
+        </div>
+
+        <!-- Resumo do pedido -->
+        <div class="w-full flex flex-col items-center gap-4">
+          <h1 class="text-zinc-900 font-bold text-lg">Resumo do pedido</h1>
+
+          <div class="w-full flex flex-col bg-zinc-100 rounded-3xl p-6">
+            <div class="w-full flex justify-between items-center mb-4">
+              <strong class="text-zinc-900">Subtotal</strong>
+              <strong class="text-zinc-900">{{
+                getSubtotal() | currency : "R$"
+              }}</strong>
+            </div>
+            <div class="w-full flex justify-between items-center">
+              <p class="text-sm font-bold text-primary-600">Entrega</p>
+              <p class="text-sm font-bold text-primary-600">Grátis</p>
+            </div>
+
+            <hr class="my-4" />
+
+            <div class="w-full flex justify-between items-center mb-4">
+              <strong class="text-xl text-zinc-900">Total</strong>
+              <strong class="text-xl text-zinc-900">{{
+                getSubtotal() | currency : "R$"
+              }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Observações -->
+        <div class="w-full flex flex-col items-center gap-4">
+          <h1 class="text-zinc-900 font-bold text-lg">Observações</h1>
+
+          <textarea
+            class="w-full border border-zinc-400 focus:border-2 focus:border-primary-600 focus:outline-none rounded-xl p-6 placeholder:text-sm placeholder:text-zinc-400 transition-colors duration-300 text-sm"
+            name="notes"
+            id="notes"
+            placeholder="ex: Bem gelado por favor, e cuidado com a embalagem!"
+            formControlName="notes"
+          ></textarea>
+        </div>
+
+        <a
+          class="text-zinc-900 text-sm cursor-pointer underline text-center hover:text-primary-600 transition-colors duration-300 mb-20"
+          (click)="clearShoppingCart()"
+          >Limpar carrinho</a
+        >
+      </div>
+    </form>
+
+    <div class="w-full fixed bottom-0 left-0 p-4">
+      <button
+        class="w-full font-bold text-white bg-primary-600 py-3 text-sm rounded-lg hover:bg-primary-700 transition-colors duration-300 disabled:bg-zinc-200 disabled:text-zinc-900"
+        [disabled]="orderForm.invalid || !userAddress || !products().length"
+        (click)="sendOrder()"
+      >
+        Fazer pedido
+      </button>
+    </div>
+  </ng-container>
+
+  <!-- Container para quando o usuário não tiver itens no carrinho -->
+  <ng-container *ngIf="!products().length">
+    <div class="w-full flex flex-col justify-center items-center gap-10 mt-36">
+      <div class="w-full flex flex-col justify-center items-center gap-4">
+        <h1 class="text-2xl font-bold text-zinc-900">Carrinho vazio!</h1>
+        <p class="text-zinc-600 text-center">
+          Quando você adicionar seus itens, eles aparecerão aqui.
+        </p>
+      </div>
+
+      <svg
+        width="90"
+        height="92"
+        viewBox="0 0 90 92"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 4.51891C0 3.48307 0.406404 2.48966 1.12981 1.75721C1.85321 1.02477 2.83436 0.613281 3.85741 0.613281H6.72733C11.6134 0.613281 14.545 3.94088 16.2166 7.03414C17.3326 9.09631 18.1401 11.4866 18.7727 13.6529C18.9439 13.6392 19.1154 13.6323 19.2871 13.632H83.567C87.8358 13.632 90.9218 17.7668 89.7491 21.9276L80.3473 55.3025C79.5044 58.2961 77.721 60.93 75.2673 62.8055C72.8136 64.6811 69.8231 65.696 66.7487 65.6967H36.1568C33.058 65.6968 30.0449 64.6665 27.5806 62.7642C25.1164 60.8618 23.3373 58.1927 22.517 55.1671L18.6082 40.7319L12.1277 18.6104L12.1226 18.5688C11.3202 15.6161 10.5693 12.8509 9.44809 10.7887C8.37316 8.78386 7.5091 8.42454 6.73247 8.42454H3.85741C2.83436 8.42454 1.85321 8.01306 1.12981 7.28061C0.406404 6.54816 0 5.55475 0 4.51891ZM33.4309 91.7446C36.159 91.7446 38.7754 90.6474 40.7045 88.6942C42.6336 86.741 43.7173 84.0919 43.7173 81.3296C43.7173 78.5674 42.6336 75.9183 40.7045 73.9651C38.7754 72.0119 36.159 70.9146 33.4309 70.9146C30.7028 70.9146 28.0864 72.0119 26.1573 73.9651C24.2282 75.9183 23.1445 78.5674 23.1445 81.3296C23.1445 84.0919 24.2282 86.741 26.1573 88.6942C28.0864 90.6474 30.7028 91.7446 33.4309 91.7446ZM69.4334 91.7446C72.1616 91.7446 74.7779 90.6474 76.707 88.6942C78.6361 86.741 79.7199 84.0919 79.7199 81.3296C79.7199 78.5674 78.6361 75.9183 76.707 73.9651C74.7779 72.0119 72.1616 70.9146 69.4334 70.9146C66.7053 70.9146 64.0889 72.0119 62.1598 73.9651C60.2307 75.9183 59.147 78.5674 59.147 81.3296C59.147 84.0919 60.2307 86.741 62.1598 88.6942C64.0889 90.6474 66.7053 91.7446 69.4334 91.7446Z"
+          fill="#D5D5D5"
+        />
+      </svg>
+
+      <div
+        class="w-full flex justify-center items-center gap-2 cursor-pointer group transition-colors duration-300"
+        [routerLink]="['/private/home']"
+      >
+        <svg
+          class="stroke-primary-600 group-hover:stroke-primary-700"
+          width="32"
+          height="33"
+          viewBox="0 0 32 33"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.6673 16.7448H12.6673M16.0007 3.41146C8.63665 3.41146 2.66732 9.38079 2.66732 16.7448C2.66732 24.1088 8.63665 30.0781 16.0007 30.0781C23.3647 30.0781 29.334 24.1088 29.334 16.7448C29.334 9.38079 23.3647 3.41146 16.0007 3.41146Z"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.334 12.7441L11.334 16.7441L15.334 20.7441"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p class="text-primary-600 group-hover:text-primary-700">
+          ir às compras
+        </p>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<router-outlet></router-outlet>

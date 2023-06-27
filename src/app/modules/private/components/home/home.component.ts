@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { RestaurantModel } from 'src/app/core/models/restaurant.model';
-import { LoginService } from 'src/app/core/services/login.service';
 import { RestaurantsService } from 'src/app/core/services/restaurants.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 
@@ -11,6 +10,9 @@ import { ToastService } from 'src/app/core/services/toast.service';
 })
 export class HomeComponent implements OnInit {
   public restaurantsList: RestaurantModel[] = [];
+  public filteredRestaurantsList: RestaurantModel[] = [];
+  public isSearching: boolean = false;
+  public userSearch: string = '';
 
   public slides: { src: string; alt: string }[] = [
     {
@@ -24,8 +26,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private spinnerService: NgxSpinnerService,
     private toastService: ToastService,
-    private restaurantsService: RestaurantsService,
-    private loginService: LoginService
+    private restaurantsService: RestaurantsService
   ) {}
 
   ngOnInit() {
@@ -54,5 +55,32 @@ export class HomeComponent implements OnInit {
         );
       }
     );
+  }
+
+  /**
+   * @description Filtrar restaurantes
+   *
+   * @author Darllinson Azevedo
+   *
+   * @param searchTerm Termo pesquisado pelo usuário
+   */
+  searchRestaurants(searchTerm: string) {
+    this.userSearch = searchTerm;
+    this.isSearching = true;
+    this.filteredRestaurantsList = this.restaurantsList.filter(
+      (restaurant) =>
+        restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        restaurant.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+
+  /**
+   * @description Cancelar busca do usuário
+   *
+   * @author Darllinson Azevedo
+   */
+  cancelSearch() {
+    this.isSearching = false;
+    this.userSearch = '';
   }
 }

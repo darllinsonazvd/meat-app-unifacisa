@@ -8,6 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { RestaurantDetailsComponent } from './components/restaurant-details/restaurant-details.component';
 import { ProductCardComponent } from './components/restaurant-details/components/product-card/product-card.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CartItemCardComponent } from './components/checkout/components/cart-item-card/cart-item-card.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddAddressComponent } from './components/checkout/components/add-address/add-address.component';
+import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
+import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { OrderCardComponent } from './components/my-orders/components/order-card/order-card.component';
 
 @NgModule({
   imports: [
@@ -16,6 +24,8 @@ import { ProductCardComponent } from './components/restaurant-details/components
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
+    NgxPhoneMaskBrModule,
   ],
   declarations: [
     PrivateComponent,
@@ -23,6 +33,12 @@ import { ProductCardComponent } from './components/restaurant-details/components
     RestaurantDetailsComponent,
     ProductCardComponent,
     UserProfileComponent,
+    CheckoutComponent,
+    CartItemCardComponent,
+    AddAddressComponent,
+    OrderPlacedComponent,
+    MyOrdersComponent,
+    OrderCardComponent,
   ],
 })
 export class PrivateModule {}

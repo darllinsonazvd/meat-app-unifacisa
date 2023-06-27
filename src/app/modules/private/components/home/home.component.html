@@ -1,9 +1,12 @@
-<app-header></app-header>
+<app-header
+  (emitUserSearch)="searchRestaurants($event)"
+  (cancelUserSearch)="cancelSearch()"
+></app-header>
 
 <div class="w-full max-w-5xl my-0 mx-auto px-3 lg:px-0 pt-36 pb-20 bg-white">
   <div class="my-0 mx-auto">
-    <div class="max-w-5xl carousel rounded-box gap-2 lg:hidden">
-      <div *ngFor="let slide of slides" class="carousel-item">
+    <div class="max-w-5xl daisy-carousel daisy-rounded-box gap-2 lg:hidden">
+      <div *ngFor="let slide of slides" class="daisy-carousel-item">
         <img [src]="slide.src" [alt]="slide.alt" />
       </div>
     </div>
@@ -17,6 +20,19 @@
     </div>
   </div>
 
+  <div class="w-full mt-8" *ngIf="isSearching">
+    <p *ngIf="filteredRestaurantsList.length">
+      Encontramos
+      <strong>{{ filteredRestaurantsList.length }} resultado(s)</strong> para
+      <span class="text-primary-600 font-bold text-xl">"{{ userSearch }}"</span>
+    </p>
+    <p *ngIf="!filteredRestaurantsList.length">
+      Não encontramos nenhum resultado para
+      <span class="text-primary-600 font-bold text-xl">"{{ userSearch }}"</span>
+      🤔
+    </p>
+  </div>
+
   <div class="w-full flex flex-col mt-8">
     <h1 class="text-2xl font-bold text-zinc-900">Restaurantes</h1>
 
@@ -25,7 +41,11 @@
     >
       <div
         class="w-full flex flex-col sm:w-64 lg:w-80 cursor-pointer transition-transform duration-300 hover:scale-105"
-        *ngFor="let restaurant of restaurantsList"
+        *ngFor="
+          let restaurant of isSearching
+            ? filteredRestaurantsList
+            : restaurantsList
+        "
         [routerLink]="['../restaurant', restaurant.id]"
       >
         <div
@@ -42,7 +62,7 @@
           <h1 class="font-bold text-zinc-900 mt-1">
             {{ restaurant.name }}
           </h1>
-          <p class="text-sm">{{ restaurant.category }}</p>
+          <p class="text-sm text-zinc-800">{{ restaurant.category }}</p>
           <p class="text-sm font-bold text-primary-600">
             {{ restaurant.deliveryEstimate }} | entrega grátis
           </p>
@@ -52,4 +72,8 @@
   </div>
 </div>
 
+<app-checkout-anchor></app-checkout-anchor>
+
 <app-navbar></app-navbar>
+
+<router-outlet></router-outlet>
