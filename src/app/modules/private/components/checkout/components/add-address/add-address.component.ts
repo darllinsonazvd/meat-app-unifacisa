@@ -29,6 +29,7 @@ export class AddAddressComponent implements OnInit {
       validators: [Validators.required, Validators.minLength(11)],
     }),
   });
+  public addressToEdit: AddressModel | undefined;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -37,6 +38,23 @@ export class AddAddressComponent implements OnInit {
 
   ngOnInit() {
     initTE({ Input, Ripple });
+
+    const address: AddressModel | null = JSON.parse(
+      this.localStorageService.getItem(LocalStorageKeys.USER_ADDRESS) || 'null'
+    );
+    if (address) {
+      this.addressToEdit = address;
+      this.addressForm.patchValue({
+        neighborhood: address.neighborhood,
+        street: address.street,
+        number: address.number,
+        complement: address.complement,
+        reference: address.reference,
+        name: address.name,
+        lastName: address.lastName,
+        phoneNumber: address.phoneNumber,
+      });
+    }
   }
 
   /**

@@ -105,15 +105,19 @@
             <strong class="text-xs text-white">endereço de entrega</strong>
           </div>
 
-          <div class="w-full flex flex-col gap-3">
-            <strong>Casa</strong>
-            <p>Rua Eng. Saturnino de Brito Filho</p>
-            <strong class="text-sm">Itararé</strong>
+          <div class="w-full flex flex-col gap-2">
+            <strong
+              >{{ userAddress.street }},
+              {{ userAddress.number || "S/N" }}</strong
+            >
+            <p>{{ userAddress.name }} {{ userAddress.lastName }}</p>
+            <strong class="text-sm">{{ userAddress.neighborhood }}</strong>
           </div>
 
           <div
             class="w-5 h-5 cursor-pointer group daisy-tooltip daisy-tooltip-left"
-            data-tip="Editar endereço"
+            data-tip="Editar"
+            [routerLink]="['add-address']"
           >
             <svg
               class="stroke-primary-600 group-hover:stroke-primary-700"
