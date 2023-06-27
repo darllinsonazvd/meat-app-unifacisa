@@ -33,14 +33,18 @@
       home
     </p>
   </a>
-  <a class="w-fit flex justify-center items-center flex-col cursor-pointer">
+  <a
+    class="w-fit flex justify-center items-center flex-col cursor-pointer"
+    [routerLink]="['/private/orders']"
+  >
     <svg
       width="20"
       height="20"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      class="fill-none stroke-zinc-800 w-5 h-5"
+      class="fill-none stroke-zinc-900 w-5 h-5"
+      *ngIf="!myOrdersIsActive"
     >
       <path
         d="M6.66669 5.83329H13.3334M7.50002 9.16663H12.5M5.60835 16.4166C6.29169 15.6833 7.33335 15.7416 7.93335 16.5416L8.77502 17.6666C9.45002 18.5583 10.5417 18.5583 11.2167 17.6666L12.0584 16.5416C12.6584 15.7416 13.7 15.6833 14.3834 16.4166C15.8667 18 17.075 17.475 17.075 15.2583V5.86663C17.0834 2.50829 16.3 1.66663 13.15 1.66663H6.85002C3.70002 1.66663 2.91669 2.50829 2.91669 5.86663V15.25C2.91669 17.475 4.13335 17.9916 5.60835 16.4166Z"
@@ -49,7 +53,30 @@
         stroke-linejoin="round"
       />
     </svg>
-    <p class="text-xs text-zinc-800 font-normal">pedidos</p>
+    <svg
+      class="fill-primary-600 w-5 h-5"
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      *ngIf="myOrdersIsActive"
+    >
+      <path
+        d="M14.4657 1.8335H7.53565C4.07065 1.8335 3.20898 2.75933 3.20898 6.4535V16.7752C3.20898 19.2135 4.54732 19.791 6.16982 18.0493L6.17898 18.0402C6.93065 17.2427 8.07649 17.3068 8.72732 18.1777L9.65315 19.4152C10.3957 20.396 11.5965 20.396 12.339 19.4152L13.2648 18.1777C13.9248 17.2977 15.0707 17.2335 15.8223 18.0402C17.454 19.7818 18.7832 19.2043 18.7832 16.766V6.4535C18.7923 2.75933 17.9307 1.8335 14.4657 1.8335ZM13.7507 10.771H8.25065C7.87482 10.771 7.56315 10.4593 7.56315 10.0835C7.56315 9.70766 7.87482 9.396 8.25065 9.396H13.7507C14.1265 9.396 14.4382 9.70766 14.4382 10.0835C14.4382 10.4593 14.1265 10.771 13.7507 10.771ZM14.6673 7.10433H7.33398C6.95815 7.10433 6.64648 6.79266 6.64648 6.41683C6.64648 6.041 6.95815 5.72933 7.33398 5.72933H14.6673C15.0432 5.72933 15.3548 6.041 15.3548 6.41683C15.3548 6.79266 15.0432 7.10433 14.6673 7.10433Z"
+      />
+    </svg>
+
+    <p
+      class="text-xs font-normal"
+      [ngClass]="
+        myOrdersIsActive
+          ? 'text-primary-600 font-bold'
+          : 'text-zinc-800 font-normal'
+      "
+    >
+      pedidos
+    </p>
   </a>
   <a
     class="w-fit flex justify-center items-center flex-col cursor-pointer"

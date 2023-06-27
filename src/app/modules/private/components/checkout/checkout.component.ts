@@ -12,6 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderModel } from './models/order.model';
 import { ToastService } from 'src/app/core/services/toast.service';
 import { Router } from '@angular/router';
+import { RestaurantModel } from 'src/app/core/models/restaurant.model';
 
 @Component({
   selector: 'app-checkout',
@@ -90,6 +91,7 @@ export class CheckoutComponent implements OnInit {
   private restaurantId: string | null = this.localStorageService.getItem(
     LocalStorageKeys.CART_ITEMS_PLACE_ID
   );
+  private restaurant: RestaurantModel | undefined;
 
   constructor(
     private shoppingCartService: ShoppingCartService,
@@ -118,6 +120,10 @@ export class CheckoutComponent implements OnInit {
         phoneNumber: this.userAddress.phoneNumber,
       });
     }
+
+    if (this.restaurantId) {
+      this.getRestaurantDetails();
+    }
   }
 
   /**
@@ -128,6 +134,22 @@ export class CheckoutComponent implements OnInit {
   foundProductsInLocalStorage() {
     if (!this.products().length)
       this.shoppingCartService.foundProductsInLocalStorage();
+  }
+
+  /**
+   * @description Recuperar detalhes do restaurante
+   *
+   * @author Darllinson Azevedo
+   */
+  getRestaurantDetails() {
+    this.spinnerService.show();
+
+    this.restaurantsService
+      .getRestaurantDetails(this.restaurantId || '')
+      .subscribe((restaurant) => {
+        this.restaurant = restaurant;
+        this.spinnerService.hide();
+      });
   }
 
   /**
@@ -172,7 +194,7 @@ export class CheckoutComponent implements OnInit {
     const orderRaw = this.orderForm.getRawValue();
     const order: OrderModel = {
       userId: this.userAddress?.phoneNumber || '',
-      restaurantId: this.restaurantId || '',
+      restaurant: this.restaurant || null,
       isDelivery: orderRaw.isDelivery || false,
       userAddress: orderRaw.isDelivery
         ? {

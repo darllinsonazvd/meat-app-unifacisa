@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.homeIsActive = this.router.isActive('/private/home', true);
+    this.myOrdersIsActive = this.router.isActive('/private/orders', true);
     this.userProfileIsActive = this.router.isActive('/private/profile', true);
   }
 }
