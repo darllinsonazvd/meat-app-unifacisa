@@ -1,15 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/core/models/product.model';
 import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product!: ProductModel;
+  @Input() public product!: ProductModel;
+  @Input() public restaurantId!: string;
 
-  constructor(private shoppingCartService: ShoppingCartService) {}
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit() {}
 
@@ -33,7 +38,17 @@ export class ProductCardComponent implements OnInit {
    * @param product Produto para ser adicionado
    */
   addProduct(product: ProductModel) {
-    this.shoppingCartService.addProduct(product, true);
+    const shoppingCartPlaceId = this.shoppingCartService.placeId;
+
+    if (this.restaurantId !== shoppingCartPlaceId) {
+      this.toastService.showError(
+        3000,
+        'Erro ao adicionar produto',
+        'Para adicionar produtos de outro restaurante limpe seu carrinho'
+      );
+    } else {
+      this.shoppingCartService.addProduct(product, true);
+    }
   }
 
   /**

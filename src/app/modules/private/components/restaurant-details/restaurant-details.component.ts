@@ -4,13 +4,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductModel } from 'src/app/core/models/product.model';
 import { RestaurantModel } from 'src/app/core/models/restaurant.model';
 import { RestaurantsService } from 'src/app/core/services/restaurants.service';
+import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service';
 
 @Component({
   selector: 'app-restaurant-details',
   templateUrl: './restaurant-details.component.html',
 })
 export class RestaurantDetailsComponent implements OnInit {
-  private restaurantId: string = this.activatedRoute.snapshot.params['id'];
+  public restaurantId: string = this.activatedRoute.snapshot.params['id'];
 
   public restaurant!: RestaurantModel;
   public products: ProductModel[] = [];
@@ -20,12 +21,17 @@ export class RestaurantDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private spinnerService: NgxSpinnerService,
-    private restaurantsService: RestaurantsService
+    private restaurantsService: RestaurantsService,
+    private shoppingCartService: ShoppingCartService
   ) {}
 
   ngOnInit() {
     this.getRestaurantDetails();
     this.getProducts();
+
+    if (!this.shoppingCartService.products.length) {
+      this.shoppingCartService.setPlaceId(this.restaurantId);
+    }
   }
 
   /**
