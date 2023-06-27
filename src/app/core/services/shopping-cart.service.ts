@@ -27,13 +27,14 @@ export class ShoppingCartService {
    *
    * @author Darllinson Azevedo
    */
-  clear(): void {
+  clear(showToast?: boolean): void {
     this.products = [];
     this.localStorageService.storage(
       LocalStorageKeys.CART_ITEMS,
       JSON.stringify(this.products)
     );
-    this.toastService.showSuccess(3000, 'Carrinho limpo!', '');
+
+    if (showToast) this.toastService.showSuccess(3000, 'Carrinho limpo!', '');
   }
 
   /**

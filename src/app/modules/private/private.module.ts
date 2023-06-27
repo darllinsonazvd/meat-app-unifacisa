@@ -13,6 +13,7 @@ import { CartItemCardComponent } from './components/checkout/components/cart-ite
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddAddressComponent } from './components/checkout/components/add-address/add-address.component';
 import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
+import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
     CheckoutComponent,
     CartItemCardComponent,
     AddAddressComponent,
+    OrderPlacedComponent,
   ],
 })
 export class PrivateModule {}

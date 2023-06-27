@@ -6,6 +6,7 @@ import { RestaurantDetailsComponent } from './components/restaurant-details/rest
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AddAddressComponent } from './components/checkout/components/add-address/add-address.component';
+import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'checkout/add-address',
         component: AddAddressComponent,
+      },
+      {
+        path: 'order-placed',
+        component: OrderPlacedComponent,
       },
     ],
   },

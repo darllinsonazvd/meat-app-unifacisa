@@ -8,12 +8,41 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
 import { LocalStorageKeys } from 'src/app/core/enums/local-storage-keys.enum';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AddressModel } from './components/add-address/models/address.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OrderModel } from './models/order.model';
+import { ToastService } from 'src/app/core/services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
 })
 export class CheckoutComponent implements OnInit {
+  public orderForm = new FormGroup({
+    isDelivery: new FormControl<boolean>(true, {
+      validators: [Validators.required],
+    }),
+    neighborhood: new FormControl<string>('', {
+      validators: [Validators.required],
+    }),
+    street: new FormControl<string>('', { validators: [Validators.required] }),
+    number: new FormControl<string>(''),
+    complement: new FormControl<string>(''),
+    reference: new FormControl<string>(''),
+    name: new FormControl<string>('', {
+      validators: [Validators.required],
+    }),
+    lastName: new FormControl<string>('', {
+      validators: [Validators.required],
+    }),
+    phoneNumber: new FormControl<string>('', {
+      validators: [Validators.required, Validators.minLength(11)],
+    }),
+    paymentMethod: new FormControl<PaymentMethodModel | null>(null, {
+      validators: [Validators.required],
+    }),
+    notes: new FormControl<string>('', {}),
+  });
   public paymentMethods: PaymentMethodModel[] = [
     {
       id: 1,
@@ -66,7 +95,8 @@ export class CheckoutComponent implements OnInit {
     private shoppingCartService: ShoppingCartService,
     private spinnerService: NgxSpinnerService,
     private restaurantsService: RestaurantsService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -75,7 +105,19 @@ export class CheckoutComponent implements OnInit {
     const address: AddressModel | null = JSON.parse(
       this.localStorageService.getItem(LocalStorageKeys.USER_ADDRESS) || 'null'
     );
-    if (address) this.userAddress = address;
+    if (address) {
+      this.userAddress = address;
+      this.orderForm.patchValue({
+        neighborhood: this.userAddress.neighborhood,
+        street: this.userAddress.street,
+        number: this.userAddress.number,
+        complement: this.userAddress.complement,
+        reference: this.userAddress.reference,
+        name: this.userAddress.name,
+        lastName: this.userAddress.lastName,
+        phoneNumber: this.userAddress.phoneNumber,
+      });
+    }
   }
 
   /**
@@ -105,7 +147,7 @@ export class CheckoutComponent implements OnInit {
    * @author Darllinson Azevedo
    */
   clearShoppingCart() {
-    this.shoppingCartService.clear();
+    this.shoppingCartService.clear(true);
   }
 
   /**
@@ -117,5 +159,40 @@ export class CheckoutComponent implements OnInit {
    */
   getSubtotal(): number {
     return this.shoppingCartService.getTotal();
+  }
+
+  /**
+   * @description Enviar pedido do usuário para o restaurante
+   *
+   * @author Darllinson Azevedo
+   */
+  sendOrder() {
+    this.spinnerService.show();
+
+    const orderRaw = this.orderForm.getRawValue();
+    const order: OrderModel = {
+      userId: this.userAddress?.phoneNumber || '',
+      restaurantId: this.restaurantId || '',
+      isDelivery: orderRaw.isDelivery || false,
+      userAddress: orderRaw.isDelivery
+        ? {
+            neighborhood: orderRaw.neighborhood || '',
+            street: orderRaw.street || '',
+            number: orderRaw.number,
+            complement: orderRaw.complement,
+            reference: orderRaw.reference,
+            name: orderRaw.name || '',
+            lastName: orderRaw.lastName || '',
+            phoneNumber: orderRaw.phoneNumber || '',
+          }
+        : null,
+      paymentMethod: orderRaw.paymentMethod || this.paymentMethods[0],
+      notes: orderRaw.notes,
+    };
+
+    this.restaurantsService.sendOrder(order).subscribe(() => {});
+    this.spinnerService.hide();
+    this.shoppingCartService.clear(false);
+    this.router.navigate(['/private/order-placed']);
   }
 }
